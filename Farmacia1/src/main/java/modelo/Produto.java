@@ -9,10 +9,18 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String nome;
-    private String descricao;
     private double preco;
+    private String descricao;
+
+    private boolean ativo; // Adicionando o atributo "ativo"
+
+    @ManyToOne(fetch = FetchType.LAZY)// Definindo o carregamento lazy para a associação com Fabricante
+    @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
+
+    // Getters e Setters
 
     public int getId() {
         return id;
@@ -30,14 +38,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public double getPreco() {
         return preco;
     }
@@ -46,11 +46,23 @@ public class Produto {
         this.preco = preco;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String novaDescricao) {
+        this.descricao = novaDescricao;
+    }
+
     public Fabricante getFabricante() {
         return fabricante;
     }
 
     public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

@@ -1,5 +1,6 @@
 package modelo;
 
+import org.hibernate.mapping.List;
 
 import javax.persistence.*;
 
@@ -8,10 +9,12 @@ import javax.persistence.*;
 public class Fabricante {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
 
+
+    // Getters e setters
     public int getId() {
         return id;
     }
@@ -27,4 +30,5 @@ public class Fabricante {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }
